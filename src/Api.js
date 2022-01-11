@@ -4,14 +4,14 @@ import {fetchPosts} from "./api/PostsPromise";
 import {fetchUsers} from "./api/UsersPromise";
 
 export const fetchData = () => {
-  const userPromise = fetchUser()
-  const postPromise = fetchPosts()
-  const usersPromise = fetchUsers()
-  return{
-    user: wrapPromise(userPromise),
-    posts: wrapPromise(postPromise),
-    userList: wrapPromise(usersPromise)
-  }
+	const userPromise = fetchUser()
+	const postPromise = fetchPosts()
+	const usersPromise = fetchUsers()
+	return{
+		user: wrapPromise(userPromise),
+		posts: wrapPromise(postPromise),
+		userList: wrapPromise(usersPromise)
+	}
 }
 
 // const wrapPromise = (promise) => {
