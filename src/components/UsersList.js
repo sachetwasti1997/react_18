@@ -10,6 +10,7 @@ export const UsersList = (props) => {
 	const onUserClick = (userId) => {
 		props.setFetchUser(fetchUserData(userId))
 		props.setFetchPost(fetchPostData(userId))
+		props.setUserId(userId)
 		props.setIsUserClicked(true)
 	}
 	return(

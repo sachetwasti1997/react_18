@@ -5,7 +5,9 @@ const fetchUser = (userId) => {
     return axios
         .get('https://jsonplaceholder.typicode.com/users/'+userId)
         .then(res => res.data)
-        .catch(err => console.log(err))
+        .catch(err =>{
+            throw err
+        })
 }
 
 export const fetchUserData = (userId) => {

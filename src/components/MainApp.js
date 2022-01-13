@@ -1,16 +1,21 @@
 import React ,{Suspense,useState} from 'react';
-import {SuspenseList} from 'react'
 
 import {UsersList} from "./UsersList";
 import UserDetails from "./UserDetails";
 import UserPost from "./UserPost";
 import {Spinner} from "./Spinner";
 
+import './mainApp.css'
+import {ErrorBoundary} from "react-error-boundary";
+import {ErrorBoundaryComponent} from "./ErrorBoundaryComponent";
+import {useSelector} from "react-redux";
+
 const MainApp = () => {
 
     const [fetchUserResource, setFetchUserResource] = useState(null)
     const [fetchPostResource, setFetchPostResource] = useState(null);
     const [isUserClicked, setIsUserClicked] = useState(false)
+    const [userId, setUserId] = useState(null)
 
     return (
         <div className="container my-5">
@@ -22,22 +27,30 @@ const MainApp = () => {
                             setFetchUser={setFetchUserResource}
                             setFetchPost={setFetchPostResource}
                             setIsUserClicked={setIsUserClicked}
+                            setUserId = {setUserId}
                         />
                     </Suspense>
                 </div>
                 <div className={"col"}>
-                    {
+                    { isUserClicked?
                         <div className={"container"}>
                             {/*<SuspenseList revealOrder={"together"}>*/}
-                            <h1>Users Details</h1>
+                            <h1>User Details</h1>
                             <Suspense fallback={<Spinner/>}>
-                                {fetchUserResource && <UserDetails resource={fetchUserResource}/>}
+                                <ErrorBoundary FallbackComponent={ErrorBoundaryComponent}>
+                                    {fetchUserResource && <UserDetails resource={fetchUserResource} userId={userId}/>}
+                                </ErrorBoundary>
                             </Suspense>
-                            <h1>User's Posts</h1>
+                            <h1 style={{marginTop:'50px'}}>User Posts</h1>
                             <Suspense fallback={<Spinner/>}>
-                                {fetchPostResource && <UserPost resource={fetchPostResource}/>}
+                                <ErrorBoundary FallbackComponent={ErrorBoundaryComponent}>
+                                    {fetchPostResource && <UserPost resource={fetchPostResource} userId={userId}/>}
+                                </ErrorBoundary>
                             </Suspense>
                             {/*</SuspenseList>*/}
+                        </div>:
+                        <div className={"container nodata"}>
+                            <h1>Select An User</h1>
                         </div>
                     }
                 </div>
