@@ -4,7 +4,7 @@ const selectList = [1000, 10000, 100000]
 
 const create_array = (range) => {
     const arr = []
-    for (var i=0; i<= range && i <= 100000; i++){
+    for (var i=0; i<= range && i <50000; i++){
         arr[i] = range - i
     }
     return arr
