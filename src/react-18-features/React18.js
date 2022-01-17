@@ -35,5 +35,11 @@ const react18 = {
 		But with react 18 if there are no fallback components then it will understand that we won't show anything
 		for fallback and it will not search for any other suspens component
 	
+	`,
+	parallel_suspense: `
+	
+		We can use as many suspense componets as we want not just in nesting but also in parallel. Basically multiple
+		parallel suspend can all suspend at the same time and resume when the process gets completed
+	
 	`
 }
