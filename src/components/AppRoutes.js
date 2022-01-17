@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom';
 import MainApp from "./MainApp";
 import React from "react";
 import ReactLogo from "../logo.svg"
+import GenerateCards from "../primeNumbers/GenerateCards";
 
 export function AppRoutes() {
 	const element = useRoutes([
@@ -21,7 +22,7 @@ export function AppRoutes() {
 			),
 		},
 		{ path: '/users', element: <MainApp /> },
-		// { path: '/primes', element: <PrimeNumbers /> },
+		{ path: '/primes', element: <GenerateCards /> },
 	]);
 
 	return element;
