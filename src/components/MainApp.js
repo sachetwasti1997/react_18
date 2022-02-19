@@ -34,7 +34,6 @@ const MainApp = () => {
                 <div className={"col"}>
                     { isUserClicked?
                         <div className={"container"}>
-                            {/*<SuspenseList revealOrder={"together"}>*/}
                             <h1>User Details</h1>
                             <Suspense fallback={<Spinner/>}>
                                 <ErrorBoundary FallbackComponent={ErrorBoundaryComponent}>
@@ -47,7 +46,6 @@ const MainApp = () => {
                                     {fetchPostResource && <UserPost resource={fetchPostResource} userId={userId}/>}
                                 </ErrorBoundary>
                             </Suspense>
-                            {/*</SuspenseList>*/}
                         </div>:
                         <div className={"container nodata"}>
                             <h1>Select An User</h1>

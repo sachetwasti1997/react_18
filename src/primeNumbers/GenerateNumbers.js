@@ -24,7 +24,7 @@ const GenerateNumbers = ({setNumberRange}) => {
             max={maxRange}
             style={{width:"90%"}}
             onChange={event => {
-               startTransition(() => setNumberRange(create_array(event.target.value)))
+               /*startTransition(() =>*/ setNumberRange(create_array(event.target.value))//)
             }}
           />
           <select
